@@ -11,8 +11,10 @@ export default function Modal({ children, open= true, onClose=()=>{}}) {
   React.useEffect(() => {
     if (open) {
       document.body.style.overflow = 'hidden'
+      setIsOpen(true)
     } else {
       document.body.style.overflow = 'auto'
+      setIsOpen(false);
     }
   }, [open])
 

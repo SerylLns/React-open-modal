@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './modal.css';
 export default function Modal({
   children,
@@ -6,11 +6,16 @@ export default function Modal({
   onClose = () => {}
 }) {
   const [isOpen, setIsOpen] = React.useState(open);
+  useEffect(() => {
+    setIsOpen(open);
+  }, [open]);
   React.useEffect(() => {
     if (open) {
       document.body.style.overflow = 'hidden';
+      setIsOpen(true);
     } else {
       document.body.style.overflow = 'auto';
+      setIsOpen(false);
     }
   }, [open]);
   const handleClose = () => {
